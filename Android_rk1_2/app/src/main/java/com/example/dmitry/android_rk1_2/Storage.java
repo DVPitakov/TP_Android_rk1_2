@@ -59,11 +59,11 @@ public class Storage {
     public Cource getCource() {
         Cource cource = new Cource();
         cource.status = Cource.FROM_CACHE;
-        cource.currency = this.preferences.getString("Currency", "");
-        cource.value = this.preferences.getString("Value", "");
-        //if (cource.value.equals("error")|| cource.value.equals("error")) {
-        //cource.status = Cource.ERROR;
-        //}
+        cource.currency = this.preferences.getString("Currency", "error");
+        cource.value = this.preferences.getString("Value", "error");
+        if (cource.value.equals("error")|| cource.value.equals("error")) {
+          cource.status = Cource.ERROR;
+        }
         return cource;
     }
 
