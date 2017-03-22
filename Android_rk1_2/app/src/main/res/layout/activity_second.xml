@@ -7,22 +7,18 @@
     tools:context="com.example.dmitry.android_rk1_2.SecondActivity">
 
     <LinearLayout
+        android:id="@+id/secondActivityLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
         <Button
-            android:id="@+id/btn4"
-            android:text="btn4"
+            android:id="@+id/RUB"
+            android:text="RUB"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <Button
-            android:id="@+id/btn5"
-            android:text="btn5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-        <Button
-            android:id="@+id/btn6"
-            android:text="btn6"
+            android:id="@+id/USD"
+            android:text="USD"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </LinearLayout>

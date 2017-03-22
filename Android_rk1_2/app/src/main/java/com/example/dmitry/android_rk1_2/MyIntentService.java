@@ -4,7 +4,9 @@ import android.app.IntentService;
 import android.content.Intent;
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v4.os.ResultReceiver;
+import android.system.ErrnoException;
 import android.util.Log;
 
 
@@ -18,15 +20,18 @@ public class MyIntentService extends IntentService {
     @Override
     protected void onHandleIntent(Intent intent) {
         if (intent != null) {
-            Log.d("myMsg", "123");
             final ResultReceiver receiver = intent.getParcelableExtra(ServiceHelper.RECEIVER);
-            sendResult(receiver);
+
+            final Bundle data = new Bundle();
+
+            Cource cource = Processor.getInstance().getNewCource();
+            data.putString(Cource.COURCE_CURRENCY, cource.currency);
+            data.putString(Cource.COURCE_VALUE, cource.value);
+            data.putInt(Cource.COURCE_STATUS, cource.status);
+            receiver.send(cource.status, data);
+
         }
     }
 
-    void sendResult(ResultReceiver receiver) {
-        final Bundle data = new Bundle();
-        data.putString("ST", "456789");
-        receiver.send(ServiceHelper.SUCCESS, data);
-    }
+
 }
