@@ -37,6 +37,11 @@ public class Storage {
     }
 
     public String getSettings() {
+        String settings = this.preferences.getString("Settings", null);
+        if (settings == null) {
+            settings = Cource.CURRENCYE_USD;
+            this.preferences.edit().putString("Settings", settings).apply();
+        }
         return this.preferences.getString("Settings", "");
     }
 
@@ -56,6 +61,9 @@ public class Storage {
         cource.status = Cource.FROM_CACHE;
         cource.currency = this.preferences.getString("Currency", "");
         cource.value = this.preferences.getString("Value", "");
+        //if (cource.value.equals("error")|| cource.value.equals("error")) {
+        //cource.status = Cource.ERROR;
+        //}
         return cource;
     }
 
